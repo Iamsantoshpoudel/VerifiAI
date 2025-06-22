@@ -1,0 +1,32 @@
+bg color  rgb(230, 238, 247)
+
+
+
+card color 194, 196, 254
+
+
+
+
+
+--linearPrimarySecondary: linear-gradient(rgb(57, 161, 215), rgb(232, 143, 202));
+--linearPrimaryAccent: linear-gradient(rgb(57, 161, 215), rgb(224, 111, 102));
+--linearSecondaryAccent: linear-gradient(rgb(232, 143, 202), rgb(224, 111, 102));
+--radialPrimarySecondary: radial-gradient(rgb(57, 161, 215), rgb(232, 143, 202));
+--radialPrimaryAccent: radial-gradient(rgb(57, 161, 215), rgb(224, 111, 102));
+--radialSecondaryAccent: radial-gradient(rgb(232, 143, 202), rgb(224, 111, 102));
+
+
+
+
+
+
+--text: rgb(2, 8, 11);
+--background: rgb(244, 250, 253);
+--primary: rgb(57, 161, 215);
+--secondary: rgb(232, 143, 202);
+--accent: rgb(224, 111, 102);
+
+
+
+
+--background: rgb(7, 13, 14);
