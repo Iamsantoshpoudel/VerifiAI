@@ -24,7 +24,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      <section className=" md:block relative hidden min-h-screen w-full overflow-hidden ">
+      <section className=" md:block relative top-20 hidden min-h-screen w-full overflow-hidden ">
         <div className=" mt-50 md:mt-10 text-center text-2xl font-semibold my-6 mt-7">
           <MorphingText
             texts={["Develop a website without limits", "With Poudel JS"]}
@@ -99,10 +99,10 @@ export default function Home() {
         </div>
       </section>
       {/* second section */}
-      <section className="bg-[rgb(194,196,254)] container relative min-h-screen p-4 w-[92%] mx-auto rounded-xl m-10">
+      <section className="bg-[rgb(194,196,254)] container top-15 relative min-h-screen p-4 w-[92%] mx-auto over-flow:hidden rounded-xl m-10">
         {/* Navigation */}
         <header className="  flex justify-between items-center">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             <div className="text-blue-800">
               <Cog6ToothIcon className="h-8 w-8  text-blue-900 cursor-pointer hover:rotate-45 transition-transform duration-300" />
             </div>
