@@ -73,8 +73,8 @@ const Navbar: React.FC = () => {
               <ul className="flex flex-col gap-4 p-4 text-white text-xl">
                 <li>
                   <Link
-                    href="https://cdn.botpress.cloud/webchat/v2.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/05/03/15/20250503155210-ZH6Y3LBH.json"
-                    onClick={() => setMenuOpen(false)}
+                  href ='#'
+                  onClick={() => setMenuOpen(false)}
                   >
                     Home
                   </Link>
