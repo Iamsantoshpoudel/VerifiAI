@@ -91,7 +91,7 @@ export function MarqueeDemo() {
   const secondRow = comments.slice(mid);
 
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden  mt-20">
       <Marquee pauseOnHover className="[--duration:20s]">
         {firstRow.map((review, index) => (
           <ReviewCard key={`first-${index}`} {...review} />

@@ -30,14 +30,14 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="navbar fixed left-4 md:left-15 z-10 w-[92%] m-auto my-6 p-4 rounded-t-2xl rounded-b-none md:rounded-2xl text-black dark:bg-black dark:text-black">
+      <header className="bg-black  w-[92%] m-auto my-6 p-4 rounded-t-2xl md:rounded-2xl text-black dark:bg-black dark:text-white">
         <div className="flex justify-between items-center">
-          <h1 className="text-black text-2xl">Poudel</h1>
+          <h1 className="text-white text-2xl">Poudel</h1>
 
           {/* Mobile menu button */}
           <button
             ref={buttonRef}
-            className="text-black md:hidden text-3xl"
+            className="text-white md:hidden text-3xl"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? "✕" : "☰"}
@@ -45,18 +45,12 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden md:block">
-            <ul className="flex gap-12 text-black text-xl cursor-pointer">
+            <ul className="flex gap-12 text-white text-xl cursor-pointer">
               <li className="hover:underline">
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://cdn.botpress.cloud/webchat/v2.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/05/03/15/20250503155210-ZH6Y3LBH.json"
-                >
-                  Home
-                </a>
+                <Link href="/">Home</Link>
               </li>
               <li className="hover:underline">
-                <Link href="/contact">Contact</Link>
+                <Link href="/about">About</Link>
               </li>
               <li className="hover:underline">
                 <Link href="/note">Community</Link>
@@ -69,10 +63,15 @@ const Navbar: React.FC = () => {
         {menuOpen && (
           <div ref={menuRef}>
             <nav
-              className="absolute navbar   md:hidden z-50 w-full left-0 mt-4 "
+              className="absolute bg-black rounded-2xl rounded-t-none md:hidden z-50 w-[20%] left-0 mt-4"
+              style={{
+                width: "calc(100% - 2rem)",
+                marginLeft: "1rem",
+                marginRight: "1rem",
+              }}
             >
-              <ul className="flex flex-col gap-4 p-4 text-black text-xl">
-                <li className="">
+              <ul className="flex flex-col gap-4 p-4 text-white text-xl">
+                <li>
                   <Link
                     href="https://cdn.botpress.cloud/webchat/v2.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/05/03/15/20250503155210-ZH6Y3LBH.json"
                     onClick={() => setMenuOpen(false)}

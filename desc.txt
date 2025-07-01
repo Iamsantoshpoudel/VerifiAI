@@ -1,0 +1,7 @@
+<a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://cdn.botpress.cloud/webchat/v2.5/shareable.html?configUrl=https://files.bpcontent.cloud/2025/05/03/15/20250503155210-ZH6Y3LBH.json"
+                >
+                  Home
+                </a>
