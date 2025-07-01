@@ -34,7 +34,10 @@ export default function Home() {
           ],
         } as ChatRequest),
       });
-
+      if (!res.ok) {
+        const text = await res.text(); // Log the HTML response
+        throw new Error(`API error: ${res.status} - ${text}`);
+      }
       const data: ChatResponse = await res.json();
       const aiReply =
         data.choices?.[0]?.message?.content ?? "Sorry, no response.";
