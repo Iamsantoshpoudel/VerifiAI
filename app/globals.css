@@ -168,7 +168,7 @@ body {
       rgba(255, 255, 255, 0));
 }
 
-/* animation */
+/* animation auto rotate */
 .roshan {
   animation-name: autoRotateAnimation;
   animation-duration: 1s;
@@ -185,4 +185,49 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+
+/* Costom scroll bar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #ffffff !important;
+  /* <-- यहीं fix गरियो */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(107, 114, 128, 0.8);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) #ffffff;
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  /* Tailwind gray-400 जस्तो खरानी */
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280;
+  /* Tailwind gray-600 जस्तो डार्क खरानी */
+}
+
+/* Firefox */
+textarea {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #ffffff;
+  /* thumb color, track color */
 }

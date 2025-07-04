@@ -3,9 +3,14 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Section from "@/components/Section";
 import { MorphingText } from "@/components/magicui/morphing-text";
+import Card from "@/components/design/Cards";
+import { MarqueeDemo } from "@/components/Marquee";
+import { PhotoChatMessage } from "@/components/design/PhotoChatMessage";
 import Image from "next/image";
 import rotate from "../assets/design/1.png";
 import sich from "../assets/design/2.png";
+import service from "../assets/design/service-2.png";
+import service3 from "../assets/design/service-3.png";
 
 export default function Home() {
   return (
@@ -24,7 +29,58 @@ export default function Home() {
             {/* middle rotating image */}
           </div>
         </section>
+        <section className="hidden md:block h-full absolute w-full top-100">
+          <div className="relative z-10 grid gap-91 lg:grid-cols-2 justify-end px-8">
+            {/* Left Card */}
+            <div className="relative w-full max-w-md min-h-[32rem] border border-n-1/10 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0">
+                <img
+                  src={service.src}
+                  className="h-full w-full object-cover"
+                  width={630}
+                  height={750}
+                  alt="robot"
+                />
+              </div>
+              <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-b from-n-8/0 to-n-8/90 lg:p-10">
+                <h4 className="h4 mb-4">Photo Detector</h4>
+                <p className="body-2 mb-12 text-n-3 navbar rounded p-2 text-black">
+                  Instantly analyze any image to determine if it was created by
+                  AI or edited with AI tools. Protect your content integrity
+                </p>
+              </div>
+              <PhotoChatMessage
+                className="rounded-bl-xl"
+                massage="Hey,Detect Fake or AI-Generated Images"
+              />
+            </div>
 
+            {/* Right Card */}
+            <div className="relative w-full max-w-md min-h-[32rem] border border-n-1/10 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0">
+                <img
+                  src={service3.src}
+                  className="h-full w-full object-cover"
+                  width={630}
+                  height={750}
+                  alt="robot-2"
+                />
+              </div>
+              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white bg-gradient-to-b from-n-8/0 to-n-8/90 lg:p-10">
+                <h4 className="h4 mb-4">AI Content Detector</h4>
+                <p className=" mb-12 text-n-3 navbar text-black rounded p-2">
+                  Upload or paste text or image to check if it's written by AI
+                  models like ChatGPT, Gemini, or Claude. Ideal for educators,
+                  employers, and journalists.
+                </p>
+                <PhotoChatMessage
+                  className=" rounded-br-xl"
+                  massage="Hey ,Can you Identify AI or Real "
+                />
+              </div>
+            </div>
+          </div>
+        </section>
         <div className="w-full h-[55vh] flex items-center justify-center md:pt-10 mt-[-40] text-white px-4">
           <div
             className="relative grid grid-cols-6 gap-4 sm:gap-8 w-full max-w-4xl"
@@ -49,7 +105,10 @@ export default function Home() {
             </figure>
           </div>
         </div>
+        <Card />
       </Section>
+
+      <MarqueeDemo />
       <Footer />
     </>
   );
