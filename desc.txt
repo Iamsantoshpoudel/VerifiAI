@@ -10,10 +10,9 @@
 
 
 
-
-                async function query(data) {
+async function query(data) {
 	const response = await fetch(
-		"https://router.huggingface.co/hf-inference/models/umm-maybe/AI-image-detector",
+		"https://router.huggingface.co/hf-inference/models/haywoodsloan/ai-image-detector-deploy",
 		{
 			headers: {
 				Authorization: `Bearer ${process.env.HF_TOKEN}`,
@@ -30,3 +29,19 @@
 query({ inputs: "cats.jpg" }).then((response) => {
     console.log(JSON.stringify(response));
 });
+
+
+
+
+
+
+
+
+####spline 
+   // <main className='m-10 w-[1061px] h-[560px]'>
+    //  <Spline
+    //     scene="https://prod.spline.design/Y3kwpL50hnTPzIHc/scene.splinecode"
+    //   />
+    // </main>
+
+    

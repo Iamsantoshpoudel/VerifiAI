@@ -27,14 +27,14 @@ const useMorphingText = (texts: string[]) => {
       const invertedFraction = 1 - fraction;
       current1.style.filter = `blur(${Math.min(
         8 / invertedFraction - 8,
-        100,
+        100
       )}px)`;
       current1.style.opacity = `${Math.pow(invertedFraction, 0.4) * 100}%`;
 
       current1.textContent = texts[textIndexRef.current % texts.length];
       current2.textContent = texts[(textIndexRef.current + 1) % texts.length];
     },
-    [texts],
+    [texts]
   );
 
   const doMorph = useCallback(() => {
@@ -140,7 +140,7 @@ export const MorphingText: React.FC<MorphingTextProps> = ({
   <div
     className={cn(
       "mx-auto h-16 w-full max-w-screen-md text-center Inconsolata text-[40pt] font-bold leading-none [filter:url(#threshold)_blur(0.6px)] md:h-24 lg:text-[6rem]  text-black dark:bg-black dark:text-white",
-      className,
+      className
     )}
   >
     <Texts texts={texts} />

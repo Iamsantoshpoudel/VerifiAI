@@ -1,0 +1,9 @@
+https://huggingface.co/haywoodsloan/ai-image-detector-deploy
+https://chatgpt.com/
+https://console.firebase.google.com/
+https://openrouter.ai/
+https://developers.google.com/custom-search/v1/introduction
+https://programmablesearchengine.google.com/
+https://nextjs.org/
+https://vercel.com/
+https://github.com/

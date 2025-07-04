@@ -3,7 +3,11 @@
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  className?: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ className }) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -30,7 +34,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="bg-black  w-[92%] m-auto my-6 p-4 rounded-t-2xl md:rounded-2xl text-black dark:bg-black dark:text-white">
+      <header className={`bg-black ${className} w-[92%] m-auto my-6 p-4 rounded-t-2xl md:rounded-2xl text-black dark:bg-black dark:text-white`}>
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl">Poudel</h1>
 

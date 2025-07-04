@@ -1,18 +1,34 @@
-"use client"
+"use client";
 import { useState } from "react";
 import axios from "axios";
 
+type FactCheckResult =
+  | {
+      type: "ai";
+      answer: string;
+    }
+  | {
+      type: "fact";
+      results: {
+        verdict: string;
+        score: number;
+        evidence: string;
+        source: string;
+      }[];
+    };
+
 export default function Detect() {
   const [claim, setClaim] = useState("");
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<FactCheckResult | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleCheck = async () => {
     setLoading(true);
     const res = await axios.post("/api/detect", { claim });
-    setResult(res.data);
+    setResult(res.data as FactCheckResult);
     setLoading(false);
   };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-10">
       <h1 className="text-3xl font-bold mb-6">Fact Checker</h1>
@@ -35,7 +51,7 @@ export default function Detect() {
           {result.type === "ai" ? (
             <p className="text-green-600">{result.answer}</p>
           ) : (
-            result.results.map((r: any, idx: number) => (
+            result.results.map((r, idx) => (
               <div key={idx} className="mb-4 border-b pb-4">
                 <p>
                   <strong>Verdict:</strong> {r.verdict}
@@ -46,7 +62,12 @@ export default function Detect() {
                 <p>
                   <strong>Evidence:</strong> {r.evidence}
                 </p>
-                <a href={r.source} target="_blank" className="text-blue-500 underline">
+                <a
+                  href={r.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 underline"
+                >
                   {r.source}
                 </a>
               </div>
