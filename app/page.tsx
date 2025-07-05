@@ -40,6 +40,7 @@ export default function Home() {
                   width={630}
                   height={750}
                   alt="robot"
+                  priority
                 />
               </div>
               <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-b from-n-8/0 to-n-8/90 lg:p-10">
@@ -63,15 +64,16 @@ export default function Home() {
                   className="h-full w-full object-cover"
                   width={630}
                   height={750}
-                  alt="robot-2"     
+                  alt="robot-2"
+                  priority
                 />
               </div>
               <div className="absolute inset-0 flex flex-col justify-end p-6 text-white bg-gradient-to-b from-n-8/0 to-n-8/90 lg:p-10">
                 <h4 className="h4 mb-4">AI Content Detector</h4>
                 <p className=" mb-12 text-n-3 navbar text-black rounded p-2">
-                  Upload or paste text or image to check if it&apos;s written by AI
-                  models like ChatGPT, Gemini, or Claude. Ideal for educators,
-                  employers, and journalists.
+                  Upload or paste text or image to check if it&apos;s written by
+                  AI models like ChatGPT, Gemini, or Claude. Ideal for
+                  educators, employers, and journalists.
                 </p>
                 <PhotoChatMessage
                   className=" rounded-br-xl"
