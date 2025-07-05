@@ -4,15 +4,15 @@ import { MarqueeDemo } from "@/components/Marquee";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import Image from "next/image";
 import main from "@/assets/main.png";
-import image2 from "@/assets/image-2.png";
-import second from "@/assets/second.jpg";
-import image3 from "@/assets/image-3.png";
+import nabin from "@/assets/nabin.jpg";
+import devraj from "@/assets/devraj.jpg";
+import yamuna from "@/assets/yamuna.jpg"
 
 export default function About() {
   return (
     <>
       <Navbar />
-      <section className=" md:block relative top-20 hidden min-h-screen w-full overflow-hidden ">
+      <section className=" md:block relative top-20 hidden  h-[130vh] w-full overflow-hidden ">
         <div className=" mt-50 md:mt-10 text-center text-2xl font-semibold my-6 ">
           <MorphingText
             texts={["Small Team", "Big Mission", "Protecting The Truth"]}
@@ -22,7 +22,7 @@ export default function About() {
           <div className="absolute top-0 bg-black rounded-2xl p-2 right-7 w-60 md:w-80 lg:w-80">
             <div className="relative">
               <Image
-                src={second}
+                src={devraj}
                 alt="Building materials"
                 className="rounded-lg "
                 priority
@@ -30,7 +30,7 @@ export default function About() {
               />
               <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
                 <p className="navbar rounded-4xl text-black text-2xl font-bold">
-                  Devraj kunwar
+                  Devraj Kunwar
                 </p>
               </div>
             </div>
@@ -41,14 +41,14 @@ export default function About() {
             <div className="relative ">
               <Image
                 src={main}
-                alt="Stylish lamp"
+                alt="team Leader"
                 className="rounded-xl shadow-xl  "
                 priority
                 sizes="(max-width: 768px) 144px, (max-width: 1200px) 224px, 288px"
               />
               <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
                 <p className="navbar rounded-4xl text-black text-2xl font-bold">
-                  Santosh poudel
+                  Santosh Poudel
                 </p>
               </div>
             </div>
@@ -68,33 +68,42 @@ export default function About() {
           </div>
 
           {/* Bottom-left logo */}
-          <div className="absolute top-115  left-30  w-40 md:w-60 lg:w-80">
-            <div className="relative  p-4 rounded-lg ">
+          <div className="absolute top-115 bg-black p-2 rounded-xl  left-30  w-40 md:w-60 lg:w-80">
+            <div className="relative   rounded-2xl ">
               <Image
-                src={image2}
-                alt="Logo"
-                className="w-full h-auto"
-                priority
+                src={nabin}
+                alt="team member"
+                className="w-full rounded-2xl h-auto"
+             
                 sizes="(max-width: 768px) 160px, (max-width: 1200px) 240px, 320px"
               />
+              <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
+                <p className="navbar rounded-4xl text-black text-2xl font-bold">
+                  Nabin Chaudhary
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Bottom-right person image */}
-          <div className="absolute bottom-20 right-5 top-80 md:right-10 lg:right-20 w-44 md:w-64 lg:w-80">
-            <div className="relative">
+          <div className="absolute top-115 bg-black p-2 rounded-xl  right-25  w-40 md:w-60 lg:w-80">
+            <div className="relative   rounded-2xl ">
               <Image
-                src={image3}
-                alt="Person with product"
-                className="rounded-lg "
-                priority
-                sizes="(max-width: 768px) 176px, (max-width: 1200px) 256px, 320px"
+                src={yamuna}
+                alt="team member"
+                className="w-full rounded-2xl h-auto"
+                sizes="(max-width: 768px) 160px, (max-width: 1200px) 240px, 320px"
               />
+              <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
+                <p className="navbar rounded-4xl text-black text-2xl font-bold">
+                  Yamuna Oli
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <div className=" p-20">
+      <div className="p-20">
         <MarqueeDemo />
       </div>
       <Footer />
