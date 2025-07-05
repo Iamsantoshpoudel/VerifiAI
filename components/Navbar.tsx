@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         className={`bg-black ${className} w-[92%] m-auto my-6 p-4 rounded-t-2xl md:rounded-2xl text-black dark:bg-black dark:text-white`}
       >
         <div className="flex justify-between items-center">
-          <h1 className="text-white text-2xl">Poudel</h1>
+          <h1 className="text-white text-2xl">VerifiAI</h1>
 
           {/* Mobile menu button */}
           <button

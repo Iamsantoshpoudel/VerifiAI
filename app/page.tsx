@@ -11,8 +11,24 @@ import sich from "../assets/design/2.png";
 import service from "../assets/design/service-2.png";
 import service3 from "../assets/design/service-3.png";
 import { MarqueeDemoVertical } from "@/components/magicui/MarqueeDemoVertical";
+import { useState, useEffect } from "react";
+import Loader from "@/components/Loader";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time for better UX
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <>
       <Navbar />
