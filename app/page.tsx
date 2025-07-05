@@ -20,7 +20,7 @@ export default function Home() {
         <section className=" h-[60vh]  top-0 flex items-center justify-center relative overflow-hidden ">
           <div className="flex flex-col justify-center items-center text-center w-[92%] max-w-4xl h-[60vh] m-auto overflow-hidden">
             <MorphingText
-              className=" absolute top-32 sm:top-0 "
+              className=" absolute  sm:top-0 "
               texts={[
                 "Verify Anything Instantly!",
                 "Stop AI Fakes Before They Spread",
@@ -30,7 +30,7 @@ export default function Home() {
           </div>
         </section>
         <section className="hidden md:block h-full absolute w-full top-100">
-          <div className="relative z-10 grid gap-91 lg:grid-cols-2 justify-end px-8">
+          <div className="relative z-10 grid gap-89 lg:grid-cols-2 justify-end px-8">
             {/* Left Card */}
             <div className="relative w-full max-w-md min-h-[32rem] border border-n-1/10 rounded-3xl overflow-hidden">
               <div className="absolute inset-0">

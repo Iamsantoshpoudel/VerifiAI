@@ -181,11 +181,8 @@ export async function POST(req: Request) {
       );
     }
   } else {
-    // If research needed
-    let results: SearchResult[] = await searchWikipedia(claim);
-    if (results.length === 0) {
-      results = await searchGoogle(claim, 3);
-    }
+    // If research needed - use Google Custom Search only
+    const results: SearchResult[] = await searchGoogle(claim, 3);
 
     const verdicts: Verdict[] = [];
 

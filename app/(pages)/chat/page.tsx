@@ -17,11 +17,29 @@ interface Message {
   content: string;
   timestamp: number;
   attachments?: { name: string; type: string; size: number }[];
+  factCheckResults?: Array<{
+    verdict: string;
+    score: number;
+    evidence: string;
+    source: string;
+  }>;
 }
 
 interface ChatData {
   messages: Message[];
   lastUpdated: number;
+}
+
+interface ApiResponse {
+  type: "ai" | "factcheck";
+  answer?: string;
+  claim?: string;
+  results?: Array<{
+    verdict: string;
+    score: number;
+    evidence: string;
+    source: string;
+  }>;
 }
 
 const STORAGE_KEY = "ai-chat-messages";
@@ -53,7 +71,23 @@ export default function AI() {
 
           // Check if data is within 3 days
           if (currentTime - chatData.lastUpdated <= STORAGE_DURATION) {
-            setMessages(chatData.messages);
+            // Ensure all messages have the factCheckResults property for backward compatibility
+            const migratedMessages = chatData.messages.map((msg: any) => ({
+              ...msg,
+              factCheckResults: msg.factCheckResults || undefined,
+            }));
+            setMessages(migratedMessages);
+
+            // Debug: Check if fact-check results are being loaded
+            const messagesWithFactCheck = migratedMessages.filter(
+              (msg) => msg.factCheckResults && msg.factCheckResults.length > 0
+            );
+            if (messagesWithFactCheck.length > 0) {
+              console.log(
+                "Loaded messages with fact-check results:",
+                messagesWithFactCheck.length
+              );
+            }
           } else {
             // Clear expired data
             localStorage.removeItem(STORAGE_KEY);
@@ -76,6 +110,17 @@ export default function AI() {
           lastUpdated: Date.now(),
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(chatData));
+
+        // Debug: Check if fact-check results are being saved
+        const messagesWithFactCheck = messages.filter(
+          (msg) => msg.factCheckResults && msg.factCheckResults.length > 0
+        );
+        if (messagesWithFactCheck.length > 0) {
+          console.log(
+            "Saved messages with fact-check results:",
+            messagesWithFactCheck.length
+          );
+        }
       } catch (error) {
         console.error("Error saving messages to localStorage:", error);
       }
@@ -144,26 +189,54 @@ export default function AI() {
     setUploadedFiles([]);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) =>
-        setTimeout(resolve, 1000 + Math.random() * 2000)
-      );
+      // Call the real API endpoint
+      const response = await fetch("/api/detect", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          claim: userInput.trim(),
+        }),
+      });
 
-      const responses = [
-        "I understand your message and I'm here to help you with whatever you need.",
-        "That's an interesting point. Let me think about this and provide you with a comprehensive response.",
-        "Thank you for sharing that information. I'll do my best to assist you with your request.",
-        "I see what you're asking about. Here's my detailed response to help address your question.",
-        "Based on what you've shared, I can provide some insights and suggestions that might be helpful.",
-      ];
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-      const aiReply = responses[Math.floor(Math.random() * responses.length)];
+      const data: ApiResponse = await response.json();
+
+      let aiReply: string;
+      let factCheckResults:
+        | Array<{
+            verdict: string;
+            score: number;
+            evidence: string;
+            source: string;
+          }>
+        | undefined;
+
+      if (data.type === "ai") {
+        // AI response
+        aiReply = data.answer || "No answer received from AI";
+      } else if (data.type === "factcheck") {
+        // Fact-check response
+        if (data.results && data.results.length > 0) {
+          aiReply = `Fact-check results for: "${data.claim}"`;
+          factCheckResults = data.results;
+        } else {
+          aiReply = `I couldn't find enough evidence to fact-check: "${data.claim}"`;
+        }
+      } else {
+        aiReply = "I received an unexpected response format from the API.";
+      }
 
       const assistantMessage: Message = {
         id: generateId(),
         role: "assistant",
         content: aiReply,
         timestamp: Date.now(),
+        factCheckResults,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
@@ -253,6 +326,48 @@ export default function AI() {
                       <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
                         {msg.content}
                       </p>
+
+                      {/* Fact-Check Results */}
+                      {msg.factCheckResults &&
+                        msg.factCheckResults.length > 0 && (
+                          <div className="mt-4 space-y-3">
+                            {msg.factCheckResults.map((result, resultIdx) => (
+                              <div
+                                key={resultIdx}
+                                className="bg-gray-50 rounded-lg p-3 border border-gray-200"
+                              >
+                                <div className="flex items-center gap-2 mb-2">
+                                  <span
+                                    className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                      result.verdict === "Likely True"
+                                        ? "bg-green-100 text-green-800"
+                                        : result.verdict === "Likely False"
+                                        ? "bg-red-100 text-red-800"
+                                        : "bg-yellow-100 text-yellow-800"
+                                    }`}
+                                  >
+                                    {result.verdict}
+                                  </span>
+                                  <span className="text-xs text-gray-500">
+                                    Score: {result.score}
+                                  </span>
+                                </div>
+                                <p className="text-sm text-gray-700 mb-2">
+                                  {result.evidence}
+                                </p>
+                                <a
+                                  href={result.source}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs text-blue-600 hover:text-blue-800 underline break-all"
+                                >
+                                  {result.source}
+                                </a>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
                       {/* File Attachments */}
                       {msg.attachments && msg.attachments.length > 0 && (
                         <div className="mt-3 space-y-2">
@@ -450,47 +565,6 @@ export default function AI() {
           </div>
         </div>
       </div>
-
-      {/* Custom Scrollbar Styles */}
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #ffffff !important; /* <-- यहीं fix गरियो */
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background-color: rgba(156, 163, 175, 0.5);
-          border-radius: 3px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(107, 114, 128, 0.8);
-        }
-
-        .custom-scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: rgba(156, 163, 175, 0.5) #ffffff;
-          background: transparent;
-        }
-
-        textarea::-webkit-scrollbar-thumb {
-          background-color: #9ca3af; /* Tailwind gray-400 जस्तो खरानी */
-          border-radius: 3px;
-        }
-
-        textarea::-webkit-scrollbar-thumb:hover {
-          background-color: #6b7280; /* Tailwind gray-600 जस्तो डार्क खरानी */
-        }
-
-        /* Firefox */
-        textarea {
-          scrollbar-width: thin;
-          scrollbar-color: #9ca3af #ffffff; /* thumb color, track color */
-        }
-      `}</style>
     </div>
   );
 }

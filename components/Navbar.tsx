@@ -34,7 +34,9 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
   return (
     <>
-      <header className={`bg-black ${className} w-[92%] m-auto my-6 p-4 rounded-t-2xl md:rounded-2xl text-black dark:bg-black dark:text-white`}>
+      <header
+        className={`bg-black ${className} w-[92%] m-auto my-6 p-4 rounded-t-2xl md:rounded-2xl text-black dark:bg-black dark:text-white`}
+      >
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl">Poudel</h1>
 
@@ -48,16 +50,19 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           </button>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:block">
+          <nav className="hidden md:block pr-3">
             <ul className="flex gap-12 text-white text-xl cursor-pointer">
-              <li className="hover:underline">
+              <li className="hover:underline hover:scale-103  transition-all duration-300 ">
                 <Link href="/">Home</Link>
               </li>
-              <li className="hover:underline">
+              <li className="hover:underline hover:scale-103  transition-all duration-300">
                 <Link href="/about">About</Link>
               </li>
-              <li className="hover:underline">
-                <Link href="/note">Community</Link>
+              <li className="hover:underline hover:scale-103  transition-all duration-300">
+                <Link href="/chat">Chat</Link>
+              </li>
+              <li className=" hover:underline hover:scale-103  transition-all duration-300">
+                <Link href="/imagei">Image</Link>
               </li>
             </ul>
           </nav>
@@ -76,10 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             >
               <ul className="flex flex-col gap-4 p-4 text-white text-xl">
                 <li>
-                  <Link
-                  href ='#'
-                  onClick={() => setMenuOpen(false)}
-                  >
+                  <Link href="#" onClick={() => setMenuOpen(false)}>
                     Home
                   </Link>
                 </li>
@@ -89,8 +91,13 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/note" onClick={() => setMenuOpen(false)}>
-                    Community
+                  <Link href="/chat" onClick={() => setMenuOpen(false)}>
+                    Chat
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/imagei" onClick={() => setMenuOpen(false)}>
+                    image
                   </Link>
                 </li>
               </ul>
