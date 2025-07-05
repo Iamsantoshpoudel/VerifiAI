@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 
 interface Result {
   timestamp: number;
-  result: any;
+  result: Record<string, unknown>;
 }
 
 export default function Detecti() {
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState<Result[]>([]);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<Record<string, unknown> | null>(null);
 
   // Load history from localStorage (and remove expired)
   useEffect(() => {

@@ -64,9 +64,9 @@ async function searchGoogle(
 
   try {
     const res = await axios.get(url, { params });
-    const data = res.data as { items?: any[] };
+    const data = res.data as { items?: Array<{ snippet: string; link: string }> };
     return (
-      data.items?.map((item: any) => ({
+      data.items?.map((item) => ({
         snippet: item.snippet,
         link: item.link,
       })) ?? []
@@ -77,25 +77,7 @@ async function searchGoogle(
   }
 }
 
-async function searchWikipedia(query: string): Promise<SearchResult[]> {
-  try {
-    const res = await axios.get(
-      "https://en.wikipedia.org/api/rest_v1/page/summary/" +
-        encodeURIComponent(query)
-    );
-    return [
-      {
-        snippet: (res.data as any).extract,
-        link:
-          (res.data as any).content_urls?.desktop?.page ||
-          "https://en.wikipedia.org/wiki/" + encodeURIComponent(query),
-      },
-    ];
-  } catch (error) {
-    console.log("Wikipedia search failed:", error);
-    return [];
-  }
-}
+
 
 async function factCheck(
   claim: string,
@@ -122,8 +104,8 @@ async function factCheck(
       score: data.scores[0],
       label: data.labels[0],
     };
-  } catch (error: any) {
-    console.error("HF fact-check error:", error.response?.data);
+  } catch (error: unknown) {
+    console.error("HF fact-check error:", (error as { response?: { data: unknown } }).response?.data);
     return null;
   }
 }

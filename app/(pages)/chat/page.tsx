@@ -2,10 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import {
-  Send,
-  Sparkles,
+ 
   MessageCircle,
-  Trash2,
   Paperclip,
   X,
 } from "lucide-react";
@@ -72,7 +70,12 @@ export default function AI() {
           // Check if data is within 3 days
           if (currentTime - chatData.lastUpdated <= STORAGE_DURATION) {
             // Ensure all messages have the factCheckResults property for backward compatibility
-            const migratedMessages = chatData.messages.map((msg: any) => ({
+            const migratedMessages = chatData.messages.map((msg: Message & { factCheckResults?: Array<{
+              verdict: string;
+              score: number;
+              evidence: string;
+              source: string;
+            }> }) => ({
               ...msg,
               factCheckResults: msg.factCheckResults || undefined,
             }));
@@ -254,11 +257,6 @@ export default function AI() {
     }
   };
 
-  const clearChat = () => {
-    setMessages([]);
-    setUploadedFiles([]);
-    localStorage.removeItem(STORAGE_KEY);
-  };
 
   return (
     <div>

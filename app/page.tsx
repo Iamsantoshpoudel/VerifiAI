@@ -34,7 +34,7 @@ export default function Home() {
             {/* Left Card */}
             <div className="relative w-full max-w-md min-h-[32rem] border border-n-1/10 rounded-3xl overflow-hidden">
               <div className="absolute inset-0">
-                <img
+                <Image
                   src={service.src}
                   className="h-full w-full object-cover"
                   width={630}
@@ -58,18 +58,18 @@ export default function Home() {
             {/* Right Card */}
             <div className="relative w-full max-w-md min-h-[32rem] border border-n-1/10 rounded-3xl overflow-hidden">
               <div className="absolute inset-0">
-                <img
+                <Image
                   src={service3.src}
                   className="h-full w-full object-cover"
                   width={630}
                   height={750}
-                  alt="robot-2"
+                  alt="robot-2"     
                 />
               </div>
               <div className="absolute inset-0 flex flex-col justify-end p-6 text-white bg-gradient-to-b from-n-8/0 to-n-8/90 lg:p-10">
                 <h4 className="h4 mb-4">AI Content Detector</h4>
                 <p className=" mb-12 text-n-3 navbar text-black rounded p-2">
-                  Upload or paste text or image to check if it's written by AI
+                  Upload or paste text or image to check if it&apos;s written by AI
                   models like ChatGPT, Gemini, or Claude. Ideal for educators,
                   employers, and journalists.
                 </p>
