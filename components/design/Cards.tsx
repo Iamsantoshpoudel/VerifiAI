@@ -1,5 +1,14 @@
 import React from "react";
-import { ArrowRight, MessageSquare, Zap, Globe } from "lucide-react";
+import {
+  ArrowRight,
+  MessageSquare,
+  Zap,
+  Video,
+  File,
+  Mic,
+  ScanLine,
+} from "lucide-react";
+import Link from "next/link";
 
 interface FeatureCardProps {
   title: string;
@@ -7,6 +16,7 @@ interface FeatureCardProps {
   icon: React.ReactNode;
   borderColor: string;
   iconBgColor: string;
+  button?: string;
   onExploreMore?: () => void;
 }
 
@@ -16,6 +26,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   icon,
   borderColor,
   iconBgColor,
+  button,
   onExploreMore,
 }) => {
   return (
@@ -41,7 +52,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
             onClick={onExploreMore}
             className="flex items-center gap-2 text-white font-medium text-sm hover:gap-3 transition-all duration-200 group-hover:translate-x-1"
           >
-            <span className="tracking-wider">EXPLORE MORE</span>
+            <span className="tracking-wider">{button}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -56,49 +67,64 @@ const Card: React.FC = () => {
       title: "Ask anything",
       description:
         "Lets users quickly find answers to their questions without having to search through multiple sources.",
-      icon: <MessageSquare className="w-6 h-6 text-white" />,
+      icon: (
+        <Link href="/chat">
+          <MessageSquare className="w-6 h-6 text-white" />
+        </Link>
+      ),
       borderColor: "border-cyan-400",
       iconBgColor: "bg-purple-600",
+      button:"Explore more",
     },
     {
-      title: "Improve everyday",
+      title: "Image Authenticity Checker",
       description:
-        "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
-      icon: <Zap className="w-6 h-6 text-white" />,
+        "Upload an image and let VerifiAI tell you if it's real or AI-generated with precision and speed.",
+
+      icon: (
+        <Link href="/detecti">
+          <Zap className="w-6 h-6 text-white" />
+        </Link>
+      ),
       borderColor: "border-orange-400",
       iconBgColor: "bg-orange-500",
+      button:"Explore more",
     },
     {
-      title: "Connect everywhere",
+      title: "Video Detection",
       description:
-        "Connect with the AI chatbot from anywhere, on any device, making it more accessible and convenient.",
-      icon: <Globe className="w-6 h-6 text-white" />,
-      borderColor: "border-purple-400",
-      iconBgColor: "bg-green-500",
+        "Identify deepfakes and AI-generated videos. Ensure video content integrity with advanced analysis tools.",
+      icon: <Video className="w-6 h-6 text-white" />,
+      borderColor: "border-red-400",
+      iconBgColor: "bg-red-500",
+      button:"Comming soon",
     },
     {
-      title: "Connect everywhere",
+      title: "File Analysis",
       description:
-        "Connect with the AI chatbot from anywhere, on any device, making it more accessible and convenient.",
-      icon: <Globe className="w-6 h-6 text-white" />,
-      borderColor: "border-purple-400",
-      iconBgColor: "bg-green-500",
+        "Upload documents, images, or media files and get instant AI authenticity checks across formats.",
+      icon: <File className="w-6 h-6 text-white" />,
+      borderColor: "border-yellow-400",
+      iconBgColor: "bg-yellow-500",
+      button:"Comming soon",
     },
     {
-      title: "Connect everywhere",
+      title: "Audio Detection",
       description:
-        "Connect with the AI chatbot from anywhere, on any device, making it more accessible and convenient.",
-      icon: <Globe className="w-6 h-6 text-white" />,
-      borderColor: "border-purple-400",
-      iconBgColor: "bg-green-500",
+        "Detect AI-generated or cloned voices. Analyze speech patterns to verify if audio is human or synthetic.",
+      icon: <Mic className="w-6 h-6 text-white" />,
+      borderColor: "border-pink-400",
+      iconBgColor: "bg-pink-500",
+      button:"Comming soon",
     },
     {
-      title: "Connect everywhere",
+      title: "Multi-Format AI Detection",
       description:
-        "Connect with the AI chatbot from anywhere, on any device, making it more accessible and convenient.",
-      icon: <Globe className="w-6 h-6 text-white" />,
-      borderColor: "border-purple-400",
-      iconBgColor: "bg-green-500",
+        "Scan and verify content across text, image, audio, and video formats — all in one unified platform.",
+      icon: <ScanLine className="w-6 h-6 text-white" />,
+      borderColor: "border-indigo-400",
+      iconBgColor: "bg-indigo-500",
+      button:"Comming soon",
     },
   ];
 
@@ -107,7 +133,7 @@ const Card: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen  py-16 mt-20 px-4">
+    <div className="h-auto  py-16 mt-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
@@ -118,6 +144,7 @@ const Card: React.FC = () => {
               icon={feature.icon}
               borderColor={feature.borderColor}
               iconBgColor={feature.iconBgColor}
+              button={feature.button ?? "Explore"}
               onExploreMore={() => handleExploreMore(feature.title)}
             />
           ))}

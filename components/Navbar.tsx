@@ -62,7 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                 <Link href="/chat">Chat</Link>
               </li>
               <li className=" hover:underline hover:scale-103  transition-all duration-300">
-                <Link href="/imagei">Image</Link>
+                <Link href="/detecti">Image</Link>
               </li>
             </ul>
           </nav>
@@ -81,13 +81,13 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             >
               <ul className="flex flex-col gap-4 p-4 text-white text-xl">
                 <li>
-                  <Link href="#" onClick={() => setMenuOpen(false)}>
+                  <Link href="/" onClick={() => setMenuOpen(false)}>
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" onClick={() => setMenuOpen(false)}>
-                    Contact
+                  <Link href="/about" onClick={() => setMenuOpen(false)}>
+                    About
                   </Link>
                 </li>
                 <li>
@@ -96,7 +96,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/imagei" onClick={() => setMenuOpen(false)}>
+                  <Link href="/detecti" onClick={() => setMenuOpen(false)}>
                     image
                   </Link>
                 </li>

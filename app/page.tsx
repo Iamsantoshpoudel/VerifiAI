@@ -4,13 +4,13 @@ import Navbar from "@/components/Navbar";
 import Section from "@/components/Section";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import Card from "@/components/design/Cards";
-import { MarqueeDemo } from "@/components/Marquee";
 import { PhotoChatMessage } from "@/components/design/PhotoChatMessage";
 import Image from "next/image";
 import rotate from "../assets/design/1.png";
 import sich from "../assets/design/2.png";
 import service from "../assets/design/service-2.png";
 import service3 from "../assets/design/service-3.png";
+import { MarqueeDemoVertical } from "@/components/magicui/MarqueeDemoVertical";
 
 export default function Home() {
   return (
@@ -110,7 +110,7 @@ export default function Home() {
         <Card />
       </Section>
 
-      <MarqueeDemo />
+      <MarqueeDemoVertical />
       <Footer />
     </>
   );

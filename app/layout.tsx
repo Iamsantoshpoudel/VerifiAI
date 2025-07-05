@@ -14,25 +14,25 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Next js with poudel",
-    template: "%s | Poudel js",
+    default: "VerifiAI",
+    template: "%s | VerifiAI",
   },
-  description: "Next js with poudel ",
+  description: "VerifiAI | Unified Ai Generated Content Detector ",
   keywords: [
-    "Next js ",
+    "santoshpoudel06 , ai detecctor,rec,image dector,fact checker,poudel,next js",
   ],
-  authors: [{ name: "Poudel", url: "https://santoshpoudel.com.np" }],
+  authors: [{ name: "VerifiAI", url: "https://santosh2.com.np" }],
   creator: "Poudel",
   generator: "Next.js",
-  metadataBase: new URL("https://santoshpoudel.com.np"),
+  metadataBase: new URL("https://santosh2.com.np"),
   openGraph: {
-    title: "Poudel ",
-    description: "Next js with poudel",
-    url: "https://santoshpoudel.com.np",
-    siteName: "Poudel",
+    title: "VerifiAi",
+    description: "VerifiAI | Unified Ai Generated Content Detector",
+    url: "https://santosh2.com.np",
+    siteName: "VerifiAI",
     images: [
       {
-        url: "/Logo.svg",
+        url: "/Logo2.svg",
         width: 1200,
         height: 630,
         alt: "Poudel",
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Poudel Solutions",
-    description: "Poudel",
-    creator: "@poudel", // Replace if you have a Twitter handle
-    images: ["/Logo.svg"],
+    title: "VerifiAi",
+    description: "VerifiAI | Unified Ai Generated Content Detector",
+    creator: "@poudelji", // Replace if you have a Twitter handle
+    images: ["/Logo2.svg"],
   },
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "/logo2.svg",
   },
 };
 
