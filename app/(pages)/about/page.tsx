@@ -71,7 +71,7 @@ export default function About() {
           <div className="absolute top-115 bg-black p-2 rounded-xl  left-30  w-40 md:w-60 lg:w-80">
             <div className="relative   rounded-2xl ">
               <Image
-                src={nabin}
+                src={yamuna}
                 alt="team member"
                 className="w-full rounded-2xl h-auto"
              
@@ -79,7 +79,7 @@ export default function About() {
               />
               <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
                 <p className="navbar rounded-4xl text-black text-2xl font-bold">
-                  Nabin Chaudhary
+                  Yamuna Oli
                 </p>
               </div>
             </div>
@@ -89,14 +89,14 @@ export default function About() {
           <div className="absolute top-115 bg-black p-2 rounded-xl  right-25  w-40 md:w-60 lg:w-80">
             <div className="relative   rounded-2xl ">
               <Image
-                src={yamuna}
+                src={nabin}
                 alt="team member"
                 className="w-full rounded-2xl h-auto"
                 sizes="(max-width: 768px) 160px, (max-width: 1200px) 240px, 320px"
               />
               <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
                 <p className="navbar rounded-4xl text-black text-2xl font-bold">
-                  Yamuna Oli
+                  Nabin Chaudhary
                 </p>
               </div>
             </div>
