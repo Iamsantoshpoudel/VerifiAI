@@ -2,14 +2,11 @@
 
 VerifiAi is a powerful web application designed to detect AI-generated content in just a few seconds. Whether it's AI-written text or AI-generated images, VerifiAi leverages advanced models to analyze and identify synthetic content with high precision.
 
-
 <h3>
 Project Stricture
 </h3>
 
-
-
-````
+```
 app/
 ├── (pages)/
 │   ├── about/
@@ -35,7 +32,7 @@ app/
 ├── not-found.tsx
 └── page.tsx
 
-````
+```
 
 <h3>
 🔍 Features
@@ -51,31 +48,34 @@ app/
 🛠️ Tech Stack
 Frontend: React / Next.js / Tailwind CSS /
 
-AI Detection: Hugging Face API / Custom Model /Openrouter model / google costom search 
+AI Detection: Hugging Face API / Custom Model /Openrouter model / google costom search
 
 🚀 Live Demo
 🔗https://santosh2.com.np/
 
 ###
+
 <h3> 
 ⚙️ Setup Instructions
 </h3>
 
-````bash
+```bash
 
 git clone https://github.com/Iamsantoshpoudel/PS.git
 
-````
+```
+
 ```bash
 Copy-Item -Path "local.env" -Destination ".env"
 
-````
-````bash
+```
+
+```bash
 npm install
 
 npm run dev
 
-````
+```
 
 <h3>
 Why Use VerifiAI ?
@@ -92,3 +92,8 @@ Why Use VerifiAI ?
 5.Supports educators, publishers, and users in maintaining content credibility.
 
 6.Provides an easy-to-use tool for making informed decisions on digital content authenticity.
+
+<h3 align ="center">
+🎉 Thank You for Checking Out the Project!
+If you enjoy this project, feel free to ⭐️ it and share it with others!
+</h3>
