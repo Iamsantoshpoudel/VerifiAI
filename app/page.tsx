@@ -13,8 +13,28 @@ import service3 from "../assets/design/service-3.png";
 import { MarqueeDemoVertical } from "@/components/magicui/MarqueeDemoVertical";
 import { useState, useEffect } from "react";
 import Loader from "@/components/Loader";
-
+import Script from "next/script";
 export default function Home() {
+  <Script id="structured-data" type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Santosh Poudel",
+      url: "https://santosh2.com.np",
+      image: "https://santosh2.com.np/admin/Santoshpoudel.jpg",
+      sameAs: [
+        "https://linkedin.com/in/poudelji",
+        "https://github.com/iamsantoshpoudel",
+        "https://www.instagram.com/santoshpoudel06",
+      ],
+      jobTitle: "Web Developer and Designer",
+      address: {
+        "@type": "44600",
+        addressLocality: "Dang",
+        addressCountry: "Nepal",
+      },
+    })}
+  </Script>;
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
