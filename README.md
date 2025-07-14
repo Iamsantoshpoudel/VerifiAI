@@ -50,8 +50,8 @@ Frontend: React / Next.js / Tailwind CSS /
 
 AI Detection: Hugging Face API / Custom Model /Openrouter model / google costom search
 
-🚀 Live Demo
-🔗https://santosh2.com.np/
+🚀 Live Demo <br>
+https://santosh2.com.np/
 
 ###
 
@@ -60,14 +60,11 @@ AI Detection: Hugging Face API / Custom Model /Openrouter model / google costom 
 </h3>
 
 ```bash
-
 git clone https://github.com/Iamsantoshpoudel/PS.git
-
 ```
 
 ```bash
 Copy-Item -Path "local.env" -Destination ".env"
-
 ```
 
 ```bash
@@ -76,6 +73,14 @@ npm install
 npm run dev
 
 ```
+<h3>You can also run in Docker </h3>
+
+````bash
+docker build -t verifiai . 
+````
+````bash
+docker run -p 3001:3001 verifiai
+````
 
 <h3>
 Why Use VerifiAI ?
