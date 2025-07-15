@@ -23,7 +23,7 @@ export default function About() {
             <div className="relative">
               <Image
                 src={devraj}
-                alt="Building materials"
+                alt="Devraj Kunwar - Santosh2 Team Member"
                 className="rounded-lg "
                 priority
                 sizes="(max-width: 800px) 160px, (max-width: 1200px) 256px, 320px"
@@ -41,7 +41,7 @@ export default function About() {
             <div className="relative ">
               <Image
                 src={main}
-                alt="team Leader"
+                alt="Santosh2 - Santosh Poudel Team Leader"
                 className="rounded-xl shadow-xl  "
                 priority
                 sizes="(max-width: 768px) 144px, (max-width: 1200px) 224px, 288px"

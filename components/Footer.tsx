@@ -53,8 +53,12 @@ const Footer = () => {
       </div>
 
       {/* Optional: Copyright */}
-      <div className="mt-8 text-center text-sm text-gray-400">
-        &copy; {new Date().getFullYear()} Poudel. All rights reserved.
+      <div className="mt-8 text-center text-sm text-gray-400 ">
+      <span>
+            © {new Date().getFullYear()} Santosh2 | <a href="https://santosh2.com.np" className="text-white">santosh2.com.np</a> |
+            <a href="https://santoshpoudel06.com.np"  target="_blank" className="text-white ml-1">santoshpoudel06.com.np</a> |
+            <a href="https://github.com/Iamsantoshpoudel" target="_blank" className="text-white ml-1">GitHub</a>
+          </span>
       </div>
     </footer>
   );

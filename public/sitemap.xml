@@ -8,6 +8,16 @@
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+      <image:loc>https://santosh2.com.np/Logo2.svg</image:loc>
+      <image:caption>Santosh2 Logo</image:caption>
+      <image:title>Santosh2 Logo</image:title>
+    </image:image>
+    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+      <image:loc>https://santosh2.com.np/admin/santosh-poudel.jpg</image:loc>
+      <image:caption>Santosh2 Profile Photo</image:caption>
+      <image:title>Santosh2 Profile Photo</image:title>
+    </image:image>
   </url>
 
   <!-- Add more pages here -->
@@ -16,6 +26,16 @@
     <lastmod>2025-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+      <image:loc>https://santosh2.com.np/admin/santosh-poudel.jpg</image:loc>
+      <image:caption>Santosh2 About Photo</image:caption>
+      <image:title>Santosh2 About Photo</image:title>
+    </image:image>
+    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+      <image:loc>https://santosh2.com.np/assets/main.png</image:loc>
+      <image:caption>Santosh2 Main Team Image</image:caption>
+      <image:title>Santosh2 Main Team Image</image:title>
+    </image:image>
   </url>
 
   <url>
