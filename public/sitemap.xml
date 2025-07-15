@@ -1,47 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
 >
   <url>
     <loc>https://santosh2.com.np/</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <image:image>
       <image:loc>https://santosh2.com.np/Logo2.svg</image:loc>
       <image:caption>Santosh2 Logo</image:caption>
       <image:title>Santosh2 Logo</image:title>
     </image:image>
-    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <image:image>
       <image:loc>https://santosh2.com.np/admin/santosh-poudel.jpg</image:loc>
       <image:caption>Santosh2 Profile Photo</image:caption>
       <image:title>Santosh2 Profile Photo</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://santosh2.com.np/admin/santoshPoudel.jpeg</image:loc>
+      <image:caption>Santosh2 Profile Photo JPEG</image:caption>
+      <image:title>Santosh2 Profile Photo JPEG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santosh2.com.np/admin/Santoshpoudel.jpg</image:loc>
+      <image:caption>Santosh2 Profile Photo Alt</image:caption>
+      <image:title>Santosh2 Profile Photo Alt</image:title>
+    </image:image>
   </url>
-
-  <!-- Add more pages here -->
   <url>
     <loc>https://santosh2.com.np/about</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <image:image>
       <image:loc>https://santosh2.com.np/admin/santosh-poudel.jpg</image:loc>
       <image:caption>Santosh2 About Photo</image:caption>
       <image:title>Santosh2 About Photo</image:title>
     </image:image>
-    <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <image:image>
+      <image:loc>https://santosh2.com.np/admin/santoshPoudel.jpeg</image:loc>
+      <image:caption>Santosh2 About Photo JPEG</image:caption>
+      <image:title>Santosh2 About Photo JPEG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santosh2.com.np/admin/Santoshpoudel.jpg</image:loc>
+      <image:caption>Santosh2 About Photo Alt</image:caption>
+      <image:title>Santosh2 About Photo Alt</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://santosh2.com.np/assets/main.png</image:loc>
       <image:caption>Santosh2 Main Team Image</image:caption>
       <image:title>Santosh2 Main Team Image</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://santosh2.com.np/assets/nabin.jpg</image:loc>
+      <image:caption>Nabin Chaudhary - Santosh2 Team Member</image:caption>
+      <image:title>Nabin Chaudhary - Santosh2 Team Member</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santosh2.com.np/assets/devraj.jpg</image:loc>
+      <image:caption>Devraj Kunwar - Santosh2 Team Member</image:caption>
+      <image:title>Devraj Kunwar - Santosh2 Team Member</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://santosh2.com.np/assets/yamuna.jpg</image:loc>
+      <image:caption>Yamuna Oli - Santosh2 Team Member</image:caption>
+      <image:title>Yamuna Oli - Santosh2 Team Member</image:title>
+    </image:image>
   </url>
-
   <url>
-    <loc>https://santoshpoudel06.com.np/chat</loc>
+    <loc>https://santosh2.com.np/chat</loc>
+    <lastmod>2025-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://santosh2.com.np/detect</loc>
+    <lastmod>2025-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://santosh2.com.np/detecti</loc>
+    <lastmod>2025-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://santosh2.com.np/form</loc>
     <lastmod>2025-07-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://santoshpoudel06.com.np/</loc>
+    <lastmod>2025-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://github.com/Iamsantoshpoudel</loc>
+    <lastmod>2025-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>
