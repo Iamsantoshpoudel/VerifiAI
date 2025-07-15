@@ -12,7 +12,7 @@ import service from "../assets/design/service-2.png";
 import service3 from "../assets/design/service-3.png";
 import { MarqueeDemoVertical } from "@/components/magicui/MarqueeDemoVertical";
 import { useState, useEffect } from "react";
-import Loader from "@/components/Loader";import Script from "next/script";
+import Loader from "@/components/Loader";
 export default function Home() {
 
 
