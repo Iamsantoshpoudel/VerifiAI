@@ -23,3 +23,15 @@ export interface ChatResponse {
     finish_reason: string;
   }[];
 }
+
+
+
+export interface OpenRouterResponse {
+  choices?: {
+    message: {
+      role: string;
+      content: string;
+    };
+  }[];
+  [key: string]: unknown;
+}

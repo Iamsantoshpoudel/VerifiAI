@@ -111,7 +111,9 @@ POST https://santosh.com.np/api/chat
 
   <script>
     async function sendMessage() {
-      const message = document.getElementById('message').value;
+      const message = document.getElementById('message').value.trim();
+
+
       const apiKey = Contact me for api | you get in free of cost ;
 
       const responseBox = document.getElementById('response');
@@ -122,7 +124,7 @@ POST https://santosh.com.np/api/chat
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + apiKey
+            'Authorization': apiKey
           },
           body: JSON.stringify({
             messages: [
