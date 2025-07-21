@@ -73,14 +73,73 @@ npm install
 npm run dev
 
 ```
+
 <h3>You can also run in Docker </h3>
 
-````bash
-docker build -t verifiai . 
-````
-````bash
+```bash
+docker build -t verifiai .
+```
+
+```bash
 docker run -p 3001:3001 verifiai
-````
+```
+
+<h3>
+🔌 Chat API Endpoint
+</h3>
+
+```
+POST https://santosh.com.np/api/chat
+```
+
+<h3>
+📝 API Request and Response Demo
+</h3>
+
+```
+<body>
+  <h2>Chat API Demo</h2>
+
+  <label for="message">Your Message:</label><br>
+  <textarea id="message" rows="4" cols="50" placeholder="type your massage">
+  </textarea><br><br>
+
+  <button onclick="sendMessage()">Send Message</button>
+
+  <h3>Response:</h3>
+  <pre id="response"></pre>
+
+  <script>
+    async function sendMessage() {
+      const message = document.getElementById('message').value;
+      const apiKey = Contact me for api | you get in free of cost ;
+
+      const responseBox = document.getElementById('response');
+      responseBox.textContent = 'Loading...';
+
+      try {
+        const res = await fetch('https://santosh2.com.np/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + apiKey
+          },
+          body: JSON.stringify({
+            messages: [
+              { role: 'user', content: message }
+            ]
+          })
+        });
+
+        const data = await res.json();
+        responseBox.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        responseBox.textContent = 'Error: ' + err.message;
+      }
+    }
+  </script>
+</body>
+```
 
 <h3>
 Why Use VerifiAI ?
