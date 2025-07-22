@@ -5,17 +5,15 @@ import { Marquee } from "@/components/magicui/marquee";
 import { useEffect, useState } from "react";
 import { db } from "@/lib/firebase/firebase"; // Your initialized Firebase config
 import { onValue, ref } from "firebase/database";
-import Image from "next/image";
+
 
 interface Comment {
-  img?: string;
   name?: string;
   username?: string;
   body?: string;
 }
 
 const ReviewCard = ({
-  img,
   name,
   username,
   body,
@@ -38,7 +36,7 @@ const ReviewCard = ({
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium dark:text-white">
             {name || "Anonymous"}
-          </figcaption>
+          </figcaption>s
           <p className="text-xs font-medium dark:text-white/40">@{username || ""}</p>
         </div>
       </div>
