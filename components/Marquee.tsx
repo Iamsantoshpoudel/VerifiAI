@@ -20,6 +20,7 @@ const ReviewCard = ({
   username,
   body,
 }: Comment) => {
+  const initial = name ? name[0].toUpperCase() : "?";
   return (
     <figure
       className={cn(
@@ -31,20 +32,14 @@ const ReviewCard = ({
       )}
     >
       <div className="flex flex-row items-center gap-2">
-        {img && (
-          <Image 
-            className="rounded-full" 
-            width={32} 
-            height={32} 
-            alt="User avatar" 
-            src={img}
-          />
-        )}
+        <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-pink-500 flex items-center justify-center text-white font-semibold text-lg">
+          {initial}
+        </div>
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium dark:text-white">
             {name || "Anonymous"}
           </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username || ""}</p>
+          <p className="text-xs font-medium dark:text-white/40">@{username || ""}</p>
         </div>
       </div>
       <blockquote className="mt-2 text-sm">{body || ""}</blockquote>
