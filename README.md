@@ -51,7 +51,7 @@ Frontend: React / Next.js / Tailwind CSS /
 AI Detection: Hugging Face API / Custom Model /Openrouter model / google costom search
 
 🚀 Live Demo <br>
-https://santosh2.com.np/
+https://santoshpoudel06.com.np/
 
 ###
 
@@ -89,7 +89,7 @@ docker run -p 3001:3001 verifiai
 </h3>
 
 ```
-POST https://santosh.com.np/api/chat
+POST https://santoshpoudel06.com.np/api/chat
 ```
 
 <h3>
@@ -120,7 +120,7 @@ POST https://santosh.com.np/api/chat
       responseBox.textContent = 'Loading...';
 
       try {
-        const res = await fetch('https://santosh2.com.np/api/chat', {
+        const res = await fetch('https://santoshpoudel06.com.np/api/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
