@@ -14,8 +14,6 @@ import { MarqueeDemoVertical } from "@/components/magicui/MarqueeDemoVertical";
 import { useState, useEffect } from "react";
 import Loader from "@/components/Loader";
 export default function Home() {
-
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -36,9 +34,20 @@ export default function Home() {
       <Section>
         <section className=" h-[60vh]  top-0 flex items-center justify-center relative overflow-hidden ">
           <div className="flex flex-col justify-center items-center text-center w-[92%] max-w-4xl h-[60vh] m-auto overflow-hidden">
+            {/* For desktop */}
             <MorphingText
-              className=" absolute  sm:top-0 "
+              className="absolute sm:top-0 hidden sm:block"
               texts={[
+                "Verify Anything Instantly!",
+                "Stop AI Fakes Before They Spread",
+              ]}
+            />
+
+            {/* For mobile */}
+            <MorphingText
+              className="absolute sm:top-0 block sm:hidden"
+              texts={[
+                "Use PC for better experience",
                 "Verify Anything Instantly!",
                 "Stop AI Fakes Before They Spread",
               ]}
