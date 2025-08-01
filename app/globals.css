@@ -79,7 +79,7 @@ body {
   color-scheme: light dark;
 
   --radius: 0.625rem;
-  --background: rgb(255, 255, 255);
+  --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);

@@ -7,3 +7,8 @@ https://programmablesearchengine.google.com/
 https://nextjs.org/
 https://vercel.com/
 https://github.com/
+
+
+
+
+dark theme color #2A2A2A
