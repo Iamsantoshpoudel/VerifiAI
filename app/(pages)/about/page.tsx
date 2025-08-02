@@ -3,7 +3,6 @@ import Footer from "@/components/Footer";
 import { MarqueeDemo } from "@/components/Marquee";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import Image from "next/image";
-import Section from "@/components/Section";
 import santoshpoudel from "@/assets/main.webp";
 import nabin from "@/assets/nabin.jpg";
 import devraj from "@/assets/devraj.jpg";
