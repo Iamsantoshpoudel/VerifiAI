@@ -3,15 +3,27 @@ import Footer from "@/components/Footer";
 import { MarqueeDemo } from "@/components/Marquee";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import Image from "next/image";
-import main from "@/assets/main.png";
+import Section from "@/components/Section";
+import santoshpoudel from "@/assets/main.webp";
 import nabin from "@/assets/nabin.jpg";
 import devraj from "@/assets/devraj.jpg";
-import yamuna from "@/assets/yamuna.jpg"
+import yamuna from "@/assets/yamuna.jpg";
+import design from "@/assets/design/design.webp";
 
 export default function About() {
   return (
     <>
       <Navbar />
+      <main className="relative top-10 flex justify-center items-center w-full h-screen md:hidden">
+        <Image
+          src={design}
+          alt="Design image"
+          fill
+          className="object-contain"
+          priority
+        />
+      </main>
+
       <section className=" md:block relative top-20 hidden  h-[130vh] w-full overflow-hidden ">
         <div className=" mt-50 md:mt-10 text-center text-2xl font-semibold my-6 ">
           <MorphingText
@@ -40,7 +52,7 @@ export default function About() {
           <div className="absolute top-10 left-5  bg-black p-2 rounded-xl md:left-10 lg:left-20 w-36 md:w-56 lg:w-72 ">
             <div className="relative ">
               <Image
-                src={main}
+                src={santoshpoudel}
                 alt="Santosh2 - Santosh Poudel Team Leader"
                 className="rounded-xl shadow-xl  "
                 priority
@@ -74,7 +86,6 @@ export default function About() {
                 src={yamuna}
                 alt="team member"
                 className="w-full rounded-2xl h-auto"
-             
                 sizes="(max-width: 768px) 160px, (max-width: 1200px) 240px, 320px"
               />
               <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
