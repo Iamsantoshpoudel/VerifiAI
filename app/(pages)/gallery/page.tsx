@@ -22,13 +22,20 @@ export default async function Gallery() {
   // Combine images with public/admin images first
   const allImageFiles = [...publicImages, ...assetsImages];
 
+  const altTexts = [
+    "profile of Santosh poudel",
+    "Santosh poudel",
+    "Santosh poudel06 (Santosh Poudel)",
+    "santoshpoudel06.com.np",
+    "github.com/iamsantoshpoudel",
+  ];
   // Map filenames to src URLs
   const images = allImageFiles.map((file, index) => ({
     src:
       index < publicImages.length
         ? `/admin/${file}`
         : `/api/serve-image?filename=${encodeURIComponent(file)}`,
-    alt: file.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " "),
+    alt: altTexts[index] || file.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " "),
   }));
 
   return (
