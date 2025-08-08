@@ -15,44 +15,47 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Santosh2 | VerifiAI",
-    template: "%s | Santosh2",
+    default: "santoshpoudel06 | VerifiAI",
+    template: "%s | santoshpoudel06",
   },
-  description: "Santosh2 (Santosh Poudel) - Official site for VerifiAI, AI content detection, and more. Also visit santoshpoudel06.com.np and GitHub for more projects and information.",
+  description:
+    "santoshpoudel06 (Santosh Poudel) - Official site for VerifiAI, AI content detection, and more. Also visit santoshpoudel06.com.np and GitHub for more projects and information.",
   keywords: [
-    "santosh2, santosh2.com.np, Santosh Poudel, VerifiAI, AI detector, image detector, fact checker, next js, AI-generated content, santoshpoudel06, santosh poudel, santosh2 images, santosh2 profile, santosh2 projects, santosh2 ai, santosh2 verification, santosh2 team, santosh2 Nepal, santosh2 developer, santosh2 official",
-    "santoshpoudel06.com.np, github.com/iamsantoshpoudel"
+    "santoshpoudel06, santoshpoudel06.com.np, Santosh Poudel, VerifiAI, AI detector, image detector, fact checker, next js, AI-generated content, santoshpoudel06, santosh poudel, santoshpoudel06 images, santoshpoudel06 profile, santoshpoudel06 projects, santoshpoudel06 ai, santoshpoudel06 verification, santoshpoudel06 team, santoshpoudel06 Nepal, santoshpoudel06 developer, santoshpoudel06 official",
+    "santoshpoudel06.com.np, github.com/iamsantoshpoudel",
   ],
-  authors: [{ name: "Santosh2", url: "https://santosh2.com.np" }],
-  creator: "Santosh2 (Santosh Poudel)",
+  authors: [{ name: "santoshpoudel06", url: "https://santoshpoudel06.com.np" }],
+  creator: "santoshpoudel06 (Santosh Poudel)",
   generator: "Next.js",
-  metadataBase: new URL("https://santosh2.com.np"),
+  metadataBase: new URL("https://santoshpoudel06.com.np"),
   openGraph: {
-    title: "Santosh2 | VerifiAI",
-    description: "Santosh2 (Santosh Poudel) - Official site for VerifiAI, AI content detection, and more. Also visit santoshpoudel06.com.np and GitHub for more projects and information.",
-    url: "https://santosh2.com.np",
-    siteName: "Santosh2 | VerifiAI",
+    title: "santoshpoudel06 | VerifiAI",
+    description:
+      "santoshpoudel06 (Santosh Poudel) - Official site for VerifiAI, AI content detection, and more. Also visit santoshpoudel06.com.np and GitHub for more projects and information.",
+    url: "https://santoshpoudel06.com.np",
+    siteName: "santoshpoudel06 | VerifiAI",
     images: [
       {
         url: "/Logo2.svg",
         width: 1200,
         height: 630,
-        alt: "Santosh2 Logo",
+        alt: "santoshpoudel06 Logo",
       },
       {
         url: "/admin/santosh-poudel.jpg",
         width: 800,
         height: 800,
-        alt: "Santosh2 Profile Photo",
-      }
+        alt: "santoshpoudel06 Profile Photo",
+      },
     ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Santosh2 | VerifiAI",
-    description: "Santosh2 (Santosh Poudel) - Official site for VerifiAI, AI content detection, and more. Also visit santoshpoudel06.com.np and GitHub for more projects and information.",
+    title: "santoshpoudel06 | VerifiAI",
+    description:
+      "santoshpoudel06 (Santosh Poudel) - Official site for VerifiAI, AI content detection, and more. Also visit santoshpoudel06.com.np and GitHub for more projects and information.",
     creator: "@poudelji",
     images: ["/Logo2.svg", "/admin/santosh-poudel.jpg"],
   },
@@ -75,35 +78,39 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         />
         {/* Structured Data for SEO */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Santosh2",
-            "alternateName": "Santosh Poudel",
-            "url": "https://santosh2.com.np",
-            "image": [
-              "https://santosh2.com.np/admin/santosh-poudel.jpg",
-              "https://santosh2.com.np/Logo2.svg"
-            ],
-            "sameAs": [
-              "https://santosh2.com.np",
-              "https://santoshpoudel06.com.np",
-              "https://github.com/Iamsantoshpoudel",
-              "https://www.linkedin.com/in/poudelji/"
-            ],
-            "jobTitle": "AI Developer, Founder of VerifiAI",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "VerifiAI"
-            },
-            "description": "Santosh2 (Santosh Poudel) is the founder of VerifiAI, specializing in AI-generated content detection and verification. Also runs santoshpoudel06.com.np and GitHub for more projects.",
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "NP"
-            }
-          })
-        }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "santoshpoudel06",
+              alternateName: "Santosh Poudel",
+              url: "https://santoshpoudel06.com.np",
+              image: [
+                "https://santoshpoudel06.com.np/admin/santosh-poudel.jpg",
+                "https://santoshpoudel06.com.np/Logo2.svg",
+              ],
+              sameAs: [
+                "https://santoshpoudel06.com.np",
+                "https://santosh2.com.np",
+                "https://github.com/Iamsantoshpoudel",
+                "https://www.linkedin.com/in/poudelji/",
+              ],
+              jobTitle: "AI Developer, Founder of VerifiAI",
+              worksFor: {
+                "@type": "Organization",
+                name: "VerifiAI",
+              },
+              description:
+                "santoshpoudel06 (Santosh Poudel) is the founder of VerifiAI, specializing in AI-generated content detection and verification. Also runs santoshpoudel06.com.np and GitHub for more projects.",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "NP",
+              },
+            }),
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
