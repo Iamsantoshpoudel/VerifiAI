@@ -98,6 +98,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://santoshpoudel06.com.np/galley</loc>
+    <lastmod>2025-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
   <url>
     <loc>https://santoshpoudel06.com.np/</loc>
