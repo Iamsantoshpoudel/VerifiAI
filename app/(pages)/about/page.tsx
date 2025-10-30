@@ -4,8 +4,6 @@ import { MarqueeDemo } from "@/components/Marquee";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import Image from "next/image";
 import santoshpoudel from "@/assets/main.webp";
-import nabin from "@/assets/nabin.jpg";
-import devraj from "@/assets/devraj.jpg";
 import yamuna from "@/assets/yamuna.jpg";
 import design from "@/assets/design/design.webp";
 
@@ -33,16 +31,14 @@ export default function About() {
           <div className="absolute top-0 bg-black rounded-2xl p-2 right-7 w-60 md:w-80 lg:w-80">
             <div className="relative">
               <Image
-                src={devraj}
+                src="#"
                 alt="Devraj Kunwar - Santosh2 Team Member"
                 className="rounded-lg "
                 priority
                 sizes="(max-width: 800px) 160px, (max-width: 1200px) 256px, 320px"
               />
               <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
-                <p className="navbar rounded-4xl text-black text-2xl font-bold">
-                  Devraj Kunwar
-                </p>
+                <p className="navbar rounded-4xl text-black text-2xl font-bold"></p>
               </div>
             </div>
           </div>
@@ -99,15 +95,13 @@ export default function About() {
           <div className="absolute top-115 bg-black p-2 rounded-xl  right-25  w-40 md:w-60 lg:w-80">
             <div className="relative   rounded-2xl ">
               <Image
-                src={nabin}
+                src="#"
                 alt="team member"
                 className="w-full rounded-2xl h-auto"
                 sizes="(max-width: 768px) 160px, (max-width: 1200px) 240px, 320px"
               />
               <div className="absolute bottom-2 left-0 right-0 mx-auto text-center  bg-opacity-90 rounded-lg px-2 py-1 text-xs">
-                <p className="navbar rounded-4xl text-black text-2xl font-bold">
-                  Nabin Chaudhary
-                </p>
+                <p className="navbar rounded-4xl text-black text-2xl font-bold"></p>
               </div>
             </div>
           </div>
