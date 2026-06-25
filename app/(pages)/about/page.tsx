@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { MarqueeDemo } from "@/components/Marquee";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import Image from "next/image";
-import santoshpoudel from "@/assets/main.webp";
+
 
 import design from "@/assets/design/design.webp";
 

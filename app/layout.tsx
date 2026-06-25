@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-// @ts-ignore: global CSS import type declarations not available in this project setup
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
