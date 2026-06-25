@@ -1,4 +1,3 @@
 User-agent: *
-Allow: /images/
-Allow: /photos/
-Sitemap: https://santosh2.com.np/sitemap.xml
+Allow: /
+Sitemap: https://santoshpoudel06.com.np/sitemap.xml

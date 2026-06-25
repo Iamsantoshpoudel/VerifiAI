@@ -22,141 +22,189 @@ interface FormattedResult {
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
-    const file = formData.get("file") as File;
+    const file = formData.get("file");
 
-    if (!file) {
+    if (!file || !(file instanceof File)) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    // Validate file type
     const validTypes = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
     if (!validTypes.includes(file.type)) {
-      return NextResponse.json({ 
-        error: "Invalid file type. Please upload PNG, JPEG, JPG, or WebP files." 
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          error: "Invalid file type. Please upload PNG, JPEG, JPG, or WebP files.",
+        },
+        { status: 400 }
+      );
     }
 
-    // Validate file size (10MB limit)
     const maxSize = 10 * 1024 * 1024;
     if (file.size > maxSize) {
-      return NextResponse.json({ 
-        error: "File too large. Please upload files smaller than 10MB." 
-      }, { status: 400 });
+      return NextResponse.json(
+        {
+          error: "File too large. Please upload files smaller than 10MB.",
+        },
+        { status: 400 }
+      );
     }
 
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Convert to JPEG using sharp for consistent processing
     const jpegBuffer = await sharp(buffer).jpeg().toBuffer();
+    const imageBytes = new Uint8Array(jpegBuffer);
 
-    const model = process.env.HF_IMAGE_DETECT_MODEL;
+    const model = process.env.HF_IMAGE_DETECT_MODEL || "Ateeqq/ai-vs-human-image-detector";
     const HF_TOKEN = process.env.HF_TOKEN;
 
-    if (!model || !HF_TOKEN) {
-      return NextResponse.json({ 
-        error: "AI model configuration is missing. Please check environment variables." 
-      }, { status: 500 });
+    const headers: Record<string, string> = {
+      "Content-Type": "image/jpeg",
+    };
+
+    if (HF_TOKEN) {
+      headers.Authorization = `Bearer ${HF_TOKEN}`;
     }
 
-    const response = await fetch(`https://router.huggingface.co/hf-inference/models/haywoodsloan/${model}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${HF_TOKEN}`,
-        "Content-Type": "image/jpeg",
-      },
-      body: jpegBuffer,
-    });
+    const response = await fetch(
+      `https://router.huggingface.co/hf-inference/models/${model}`,
+      {
+        method: "POST",
+        headers,
+        body: imageBytes,
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
       console.error("Hugging Face API error:", errorText);
-      return NextResponse.json({ 
-        error: "Failed to analyze image. Please try again." 
-      }, { status: 500 });
+      return NextResponse.json(
+        {
+          error: "Failed to analyze image. Please try again.",
+        },
+        { status: 500 }
+      );
     }
 
     const rawResult = await response.json();
-    
-    // Format and interpret the results
-    const formattedResult: FormattedResult = formatDetectionResults(rawResult);
-    
-    return NextResponse.json({ 
-      result: formattedResult,
-      success: true 
-    });
+    const formattedResult = formatDetectionResults(rawResult);
 
+    return NextResponse.json({
+      result: formattedResult,
+      success: true,
+    });
   } catch (error) {
     console.error("Image detection error:", error);
-    return NextResponse.json({ 
-      error: "An unexpected error occurred. Please try again." 
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: "An unexpected error occurred. Please try again.",
+      },
+      { status: 500 }
+    );
   }
 }
 
+function clampScore(score: number): number {
+  return Math.max(0, Math.min(1, score));
+}
+
+function normalizePrediction(pred: unknown): ModelPrediction {
+  const raw = pred as {
+    label?: string;
+    class?: string;
+    score?: number;
+    confidence?: number;
+  };
+
+  const label = raw.label ?? raw.class ?? "unknown";
+  const score = typeof raw.score === "number"
+    ? raw.score
+    : typeof raw.confidence === "number"
+      ? raw.confidence
+      : 0;
+
+  return {
+    label: String(label),
+    score: clampScore(score),
+  };
+}
+
 function formatDetectionResults(rawResult: unknown): FormattedResult {
-  // Handle different response formats from the model
   let predictions: ModelPrediction[] = [];
-  
+
   if (Array.isArray(rawResult)) {
-    // If result is directly an array of predictions
-    predictions = rawResult.map((pred: unknown) => ({
-      label: (pred as { label?: string; class?: string })?.label || (pred as { label?: string; class?: string })?.class || "unknown",
-      score: (pred as { score?: number; confidence?: number })?.score || (pred as { score?: number; confidence?: number })?.confidence || 0
-    }));
-  } else if (typeof rawResult === 'object' && rawResult !== null && 'predictions' in rawResult && Array.isArray((rawResult as { predictions: unknown }).predictions)) {
-    // If result has a predictions array
-    predictions = (rawResult as { predictions: unknown[] }).predictions.map((pred: unknown) => ({
-      label: (pred as { label?: string; class?: string })?.label || (pred as { label?: string; class?: string })?.class || "unknown",
-      score: (pred as { score?: number; confidence?: number })?.score || (pred as { score?: number; confidence?: number })?.confidence || 0
-    }));
-  } else if (typeof rawResult === 'object' && rawResult !== null && 'classes' in rawResult && Array.isArray((rawResult as { classes: unknown }).classes)) {
-    // Alternative format
-    predictions = (rawResult as { classes: unknown[] }).classes.map((pred: unknown) => ({
-      label: (pred as { class?: string; label?: string })?.class || (pred as { class?: string; label?: string })?.label || "unknown",
-      score: (pred as { confidence?: number; score?: number })?.confidence || (pred as { confidence?: number; score?: number })?.score || 0
-    }));
-  } else if (typeof rawResult === 'object' && rawResult !== null) {
-    // Fallback: try to extract any prediction-like data
-    const keys = Object.keys(rawResult);
+    predictions = rawResult.map(normalizePrediction);
+  } else if (
+    typeof rawResult === "object" &&
+    rawResult !== null &&
+    "predictions" in rawResult &&
+    Array.isArray((rawResult as { predictions: unknown }).predictions)
+  ) {
+    predictions = (rawResult as { predictions: unknown[] }).predictions.map(normalizePrediction);
+  } else if (
+    typeof rawResult === "object" &&
+    rawResult !== null &&
+    "classes" in rawResult &&
+    Array.isArray((rawResult as { classes: unknown }).classes)
+  ) {
+    predictions = (rawResult as { classes: unknown[] }).classes.map(normalizePrediction);
+  } else if (typeof rawResult === "object" && rawResult !== null) {
+    const keys = Object.keys(rawResult as Record<string, unknown>);
     predictions = keys
-      .filter(key => typeof (rawResult as Record<string, unknown>)[key] === 'number' && (rawResult as Record<string, number>)[key] >= 0 && (rawResult as Record<string, number>)[key] <= 1)
-      .map(key => ({
+      .filter((key) => {
+        const value = (rawResult as Record<string, unknown>)[key];
+        return typeof value === "number" && value >= 0 && value <= 1;
+      })
+      .map((key) => ({
         label: key,
-        score: (rawResult as Record<string, number>)[key]
+        score: clampScore((rawResult as Record<string, number>)[key]),
       }));
   }
 
-  // Sort predictions by score (highest first)
   predictions.sort((a, b) => b.score - a.score);
-
-  // Normalize scores to ensure they're between 0 and 1
-  predictions = predictions.map(pred => ({
+  predictions = predictions.map((pred) => ({
     ...pred,
-    score: Math.max(0, Math.min(1, pred.score))
+    score: clampScore(pred.score),
   }));
 
-  // Determine AI vs Human scores
-  const aiKeywords = ['ai', 'artificial', 'generated', 'synthetic', 'fake', 'fake_image', 'ai_generated'];
-  const humanKeywords = ['human', 'real', 'natural', 'authentic', 'real_image', 'human_created'];
+  const aiKeywords = [
+    "ai",
+    "artificial",
+    "generated",
+    "synthetic",
+    "fake",
+    "deepfake",
+    "fake_image",
+    "ai_generated",
+  ];
+  const humanKeywords = [
+    "human",
+    "hum",
+    "real",
+    "natural",
+    "authentic",
+    "real_image",
+    "human_created",
+    "photo",
+  ];
 
   let aiScore = 0;
   let humanScore = 0;
 
-  predictions.forEach(pred => {
+  predictions.forEach((pred) => {
     const label = pred.label.toLowerCase();
-    if (aiKeywords.some(keyword => label.includes(keyword))) {
+
+    if (label === "ai" || aiKeywords.some((keyword) => label.includes(keyword))) {
       aiScore = Math.max(aiScore, pred.score);
-    } else if (humanKeywords.some(keyword => label.includes(keyword))) {
+    } else if (label === "hum" || humanKeywords.some((keyword) => label.includes(keyword))) {
       humanScore = Math.max(humanScore, pred.score);
     }
   });
 
-  // If we can't determine from keywords, use the highest score
   if (aiScore === 0 && humanScore === 0 && predictions.length > 0) {
     const topPred = predictions[0];
-    // Assume first prediction is AI if score is high enough
-    if (topPred.score > 0.5) {
+    const label = topPred.label.toLowerCase();
+
+    if (label.includes("ai") || label.includes("fake") || label.includes("generated")) {
       aiScore = topPred.score;
       humanScore = 1 - topPred.score;
     } else {
@@ -165,14 +213,13 @@ function formatDetectionResults(rawResult: unknown): FormattedResult {
     }
   }
 
-  // Determine overall verdict
-  const isAIGenerated = aiScore > humanScore;
+  const isAIGenerated = aiScore >= humanScore;
   const confidence = Math.max(aiScore, humanScore);
-  
+
   let overallVerdict = "Unclear";
-  if (confidence > 0.7) {
+  if (confidence >= 0.85) {
     overallVerdict = isAIGenerated ? "Likely AI-Generated" : "Likely Human-Created";
-  } else if (confidence > 0.5) {
+  } else if (confidence >= 0.6) {
     overallVerdict = isAIGenerated ? "Possibly AI-Generated" : "Possibly Human-Created";
   }
 
@@ -184,7 +231,7 @@ function formatDetectionResults(rawResult: unknown): FormattedResult {
     analysis: {
       aiScore,
       humanScore,
-      topPrediction: predictions[0] || { label: "unknown", score: 0 }
-    }
+      topPrediction: predictions[0] || { label: "unknown", score: 0 },
+    },
   };
 }

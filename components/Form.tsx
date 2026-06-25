@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { db } from "@/lib/firebase/firebase";
+import { getDb } from "@/lib/firebase/firebase";
 import { ref, push, set } from "firebase/database";
 
 interface FormState {
@@ -164,8 +164,13 @@ export default function CommentForm() {
     setIsSubmitting(true);
 
     try {
+      const database = getDb();
+      if (!database) {
+        throw new Error("Firebase is not configured");
+      }
+
       const initial = form.name ? form.name[0].toUpperCase() : "?";
-      const newCommentRef = push(ref(db, "comments"));
+      const newCommentRef = push(ref(database, "comments"));
       await set(newCommentRef, {
         ...form,
         username: form.username || form.name.toLowerCase().replace(/\s+/g, ""),

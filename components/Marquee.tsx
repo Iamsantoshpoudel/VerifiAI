@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
 import { useEffect, useState } from "react";
-import { db } from "@/lib/firebase/firebase"; // Your initialized Firebase config
+import { getDb } from "@/lib/firebase/firebase";
 import { onValue, ref } from "firebase/database";
 
 interface Comment {
@@ -47,13 +47,16 @@ export function MarqueeDemo() {
   const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
-    const commentsRef = ref(db, "comments");
+    const database = getDb();
+    if (!database) {
+      return;
+    }
+
+    const commentsRef = ref(database, "comments");
     onValue(commentsRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        // Convert Firebase object to array of comments
         const loadedComments = Object.entries(data).map(([, value]) => {
-          // Ensure we're treating value as a Comment
           const commentData = value as Record<string, string>;
           return {
             img: commentData.img || "",
@@ -62,7 +65,7 @@ export function MarqueeDemo() {
             body: commentData.body || "",
           };
         });
-        setComments(loadedComments.reverse()); // newest first
+        setComments(loadedComments.reverse());
       }
     });
   }, []);
