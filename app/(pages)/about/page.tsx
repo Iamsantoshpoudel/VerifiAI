@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MarqueeDemo } from "@/components/Marquee";
+import { MarqueeDemo } from "@/components/magicui/MarqueDemo";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import Image from "next/image";
 
