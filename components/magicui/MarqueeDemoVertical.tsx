@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
+
 const reviews = [
   {
     name: "Anisha",
@@ -47,7 +48,7 @@ const reviews = [
   {
     name: "Olivia",
     username: "@oliviaUX",
-    body: "I’m impressed by the speed and precision. It fits perfectly into my design workflow for content validation.",
+    body: "I'm impressed by the speed and precision. It fits perfectly into my design workflow for content validation.",
     img: "https://avatar.vercel.sh/olivia",
   },
   {
@@ -65,7 +66,7 @@ const reviews = [
   {
     name: "Sagar",
     username: "@sagarCyber",
-    body: "Great tool for cybersecurity awareness. Helps people know what’s real and what’s AI-made. Love it.",
+    body: "Great tool for cybersecurity awareness. Helps people know what's real and what's AI-made. Love it.",
     img: "https://avatar.vercel.sh/sagar",
   },
   {
@@ -74,15 +75,16 @@ const reviews = [
     body: "Highly recommended for journalists and educators. VerifiAI brings transparency to digital content.",
     img: "https://avatar.vercel.sh/tina",
   },
-  
 ];
 
-const firstRow = reviews.slice(0, Math.ceil(reviews.length / 6));
-const secondRow = reviews.slice(Math.ceil(reviews.length / 6), Math.ceil(reviews.length / 3));
-const thirdRow = reviews.slice(Math.ceil(reviews.length / 3), Math.ceil(reviews.length / 2));
-const fourthRow = reviews.slice(Math.ceil(reviews.length / 2), Math.ceil(reviews.length * 2 / 3));
-const fifthRow = reviews.slice(Math.ceil(reviews.length * 2 / 3), Math.ceil(reviews.length * 5 / 6));
-const sixthRow = reviews.slice(Math.ceil(reviews.length * 5 / 6));
+// Split into 6 equal-ish columns for desktop
+const chunkSize = Math.ceil(reviews.length / 6);
+const col1 = reviews.slice(0, chunkSize);
+const col2 = reviews.slice(chunkSize, chunkSize * 2);
+const col3 = reviews.slice(chunkSize * 2, chunkSize * 3);
+const col4 = reviews.slice(chunkSize * 3, chunkSize * 4);
+const col5 = reviews.slice(chunkSize * 4, chunkSize * 5);
+const col6 = reviews.slice(chunkSize * 5);
 
 const ReviewCard = ({
   img,
@@ -98,62 +100,71 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative h-full w-fit sm:w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
+        "relative h-full w-45 cursor-pointer overflow-hidden rounded-xl border p-2",
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
       )}
     >
       <div className="flex flex-row items-center gap-2">
         <img className="rounded-full" width="32" height="32" alt="" src={img} />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
+          <figcaption className="text-xl font-medium dark:text-white">
             {name}
           </figcaption>
           <p className="text-xs font-medium dark:text-white/40">{username}</p>
         </div>
       </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
+      <blockquote className="mt-2 text-xl">{body}</blockquote>
     </figure>
   );
 };
 
 export function MarqueeDemoVertical() {
   return (
-    <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden gap-20">
+    <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden gap-10">
+
+      {/* ── Column 1 — always visible ── */}
       <Marquee pauseOnHover vertical className="[--duration:20s]">
-        {firstRow.map((review) => (
+        {col1.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
+
+      {/* ── Column 2 — always visible ── */}
       <Marquee reverse pauseOnHover vertical className="[--duration:18s]">
-        {secondRow.map((review) => (
+        {col2.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee pauseOnHover vertical className="[--duration:22s]">
-        {thirdRow.map((review) => (
+
+      {/* ── Columns 3–6 — desktop only (md+) ── */}
+      <Marquee pauseOnHover vertical className="hidden md:flex [--duration:22s]">
+        {col3.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover vertical className="[--duration:16s]">
-        {fourthRow.map((review) => (
+
+      <Marquee reverse pauseOnHover vertical className="hidden md:flex [--duration:16s]">
+        {col4.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee pauseOnHover vertical className="[--duration:24s]">
-        {fifthRow.map((review) => (
+
+      <Marquee pauseOnHover vertical className="hidden md:flex [--duration:24s]">
+        {col5.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover vertical className="[--duration:19s]">
-        {sixthRow.map((review) => (
+
+      <Marquee reverse pauseOnHover vertical className="hidden md:flex [--duration:19s]">
+        {col6.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background"></div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background"></div>
+
+      {/* Gradient fade edges */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-background" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-background" />
     </div>
   );
 }
