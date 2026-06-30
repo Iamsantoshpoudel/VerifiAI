@@ -34,12 +34,6 @@ export default function Home() {
       <Section>
         <section className=" h-[60vh]  top-0 flex items-center justify-center relative overflow-hidden ">
           <div className="flex flex-col justify-center items-center text-center w-[92%] max-w-4xl h-[60vh] m-auto overflow-hidden">
-            <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
-              Santosh Poudel | VerifiAI
-            </h1>
-            <p className=" hidden max-w-2xl text-sm sm:text-lg text-gray-300 mb-8">
-              Santosh Poudel builds AI detection and content verification tools for creators, educators, journalists, and businesses.
-            </p>
             {/* For desktop */}
             <MorphingText
               className="absolute sm:top-0 hidden sm:block"
@@ -141,7 +135,6 @@ export default function Home() {
         </div>
         <Card />
       </Section>
-
       <MarqueeDemoVertical />
       <Footer />
     </>
